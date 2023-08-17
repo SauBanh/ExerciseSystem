@@ -18,7 +18,7 @@ db_password = os.getenv("DB_PASSWORD")
 
 # SQLALCHEMY_DATABASE_URL = 'sqlite:///./ig_api.db'
 SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/exercise_system"
-# SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:0962147976@:3306/exercise_system"
+# SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:0962147976@127.0.0.1:3306/exercise_system"
 
 try:
     engine = create_engine(SQLALCHEMY_DATABASE_URL)
