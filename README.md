@@ -8,8 +8,21 @@ project_root/
 │    │
 │    ├── env/
 │    │
+│    ├── configs/
+│    │   ├── config.py
+│    │   ├── ...
+│    │
+│    ├── crud/
+│    │   ├── crud.py
+│    │   ├── ...
+│    │
+│    ├── database/
+│    │   ├── database.py
+│    │   ├── ...
+│    │
 │    ├── models/
 │    │   ├── base.py
+│    │   ├── schemas.py
 │    │   ├── user_model.py
 │    │   ├── class_model.py
 │    │   ├── ...
@@ -30,8 +43,8 @@ project_root/
 │    │   ├── ...
 │    │
 │    ├── test/
-│    │   ├── example.py
-│    │   ├── example.py
+│    │   ├── test_connect_db.py
+│    │   ├── test_user_admin.py
 │    │   ├── ...
 │    │
 │    ├── utils/
@@ -43,6 +56,7 @@ project_root/
 │    │
 │    ├── .env
 │    ├── main.py
+│    └── requirements.txt
 │    └── ...
 │
 ```

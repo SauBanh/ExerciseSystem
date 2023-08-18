@@ -1,0 +1,1 @@
+# Tệp này có thể chứa các cấu hình toàn cục cho ứng dụng như cấu hình gửi email, cấu hình bảo mật, cấu hình CORS, cấu hình lưu trữ, v.v.

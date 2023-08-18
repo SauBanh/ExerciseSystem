@@ -1,0 +1,1 @@
+# Module này chứa các hàm hoặc lớp liên quan đến thao tác CRUD với đối tượng người dùng (user). Các hàm thường bao gồm create_user, get_user, update_user, delete_user để thực hiện các hoạt động tương ứng.
