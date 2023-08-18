@@ -1,0 +1,1 @@
+# Đây là tệp chứa các hằng số có thể được sử dụng trong toàn bộ ứng dụng. Điều này giúp tách biệt các giá trị cố định ra khỏi mã nguồn chính.
