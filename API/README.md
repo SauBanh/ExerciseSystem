@@ -24,6 +24,7 @@
     -   [test](#test)
     -   [utils](#utils)
     -   [migrations](#migrations)
+-   [Cấu trúc ERD database của dự án](#cấu-trúc-erd-database-của-dự-án)
 
 <br>
 
@@ -238,3 +239,7 @@ Folder utils chứa các công cụ, hàm tiện ích và các phần nhỏ khá
 ## migrations
 
 Folder migrations kết nối cơ sở dữ liệu có thể cung cấp các công cụ để tạo và quản lý các phiên bản cơ sở dữ liệu (migrations) khi bạn thay đổi cấu trúc cơ sở dữ liệu.
+
+# Cấu trúc ERD database của dự án
+
+![Alt text](z_img_readme/db.png)

@@ -8,7 +8,7 @@ class DbClassMember(Base):
     id = Column(Integer, primary_key=True, index=True)
     join_at = Column(DateTime, default=datetime.utcnow)
     user_id = Column(Integer, ForeignKey('user.id'))
-    class_id = Column(Integer, ForeignKey('class.id'))
+    class_id = Column(Integer, ForeignKey('class.id', ondelete='CASCADE'))
     
     # Tạo quan hệ từ 'class_memberships' trong bảng 'DbUser' về 'user' trong bảng này
     user = relationship("DbUser", back_populates="class_memberships")
