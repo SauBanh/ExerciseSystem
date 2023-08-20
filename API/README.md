@@ -211,6 +211,10 @@ Folder routers để chứa các tệp và module liên quan đến việc đị
 
 Folder services chứa các module và tệp liên quan đến xử lý logic kinh doanh và các chức năng chính của ứng dụng
 
+-   Thường chứa các logic nghiệp vụ (business logic) của ứng dụng
+-   Các tệp trong thư mục này thường định nghĩa các hàm hoặc lớp để xử lý các tác vụ liên quan đến xử lý dữ liệu và tương tác với cơ sở dữ liệu.
+-   services chứa các tầng nghiệp vụ của ứng dụng
+
 <a id="static"></a>
 
 ## static
