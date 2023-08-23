@@ -3,6 +3,7 @@ from sqlalchemy.orm.session import Session
 from models.user_model import DbUser
 from utils.hashing import Hash
 from fastapi import HTTPException, status
+from routers.schemas import PasswordBase
 
 def create_user(db: Session, request: UserBase):
 
@@ -47,3 +48,17 @@ def get_all(db: Session):
 #     if not user:
 #         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'User with username {username} not found')
 #     return user
+
+def verify_password(db_password, user_input_password):    
+    if not Hash.verify(db_password, user_input_password):
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Incorrect password')
+    return True
+
+def change_password(db: Session, request: PasswordBase, current_user):
+    user = get_user_by_email(db, current_user.email)
+    is_correct_password = verify_password(user.password, request.password)
+    if not is_correct_password:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Incorrect password')
+    user.password = Hash.bcrypt(request.new_password)
+    db.add(user)
+    db.commit()

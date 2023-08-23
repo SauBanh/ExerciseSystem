@@ -39,3 +39,7 @@ class UserAuth(BaseModel):
     id: int
     email: str
     role_id: int
+
+class PasswordBase(BaseModel):
+    password: str
+    new_password: str
