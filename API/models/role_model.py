@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 class DbRole(Base):
     __tablename__ = 'role'
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(255))
+    name = Column(String(255), nullable=False)
 
     # Tạo quan hệ ngược từ bảng 'role' đến 'user'
     users = relationship("DbUser", back_populates="role")

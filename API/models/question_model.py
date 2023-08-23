@@ -5,9 +5,9 @@ from sqlalchemy.orm import relationship
 class DbQuestion(Base):
     __tablename__ = 'question'
     id = Column(Integer, primary_key=True, index=True)
-    assignment_id = Column(Integer, ForeignKey('assignment.id'))
-    title = Column(String(255))
-    content = Column(String(255))
+    assignment_id = Column(Integer, ForeignKey('assignment.id'), nullable=False)
+    title = Column(String(255), nullable=False)
+    content = Column(String(255), nullable=True)
 
     # Tạo quan hệ từ 'assignment' trong bảng 'DbAssignment' về 'assignment_questions' trong bảng này
     assignment = relationship("DbAssignment", back_populates="questions")

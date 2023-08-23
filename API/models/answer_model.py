@@ -5,9 +5,9 @@ from sqlalchemy.orm import relationship
 class DbAnswer(Base):
     __tablename__ = 'answer'
     id = Column(Integer, primary_key=True, index=True)
-    question_id = Column(Integer, ForeignKey('question.id'))
-    content = Column(String(255))
-    is_correct = Column(Boolean)
+    question_id = Column(Integer, ForeignKey('question.id'), nullable=False)
+    content = Column(String(255), nullable=False)
+    is_correct = Column(Boolean, nullable=False)
 
     # Tạo quan hệ từ 'question' trong bảng 'DbQuestion' về 'answers' trong bảng này
     question = relationship("DbQuestion", back_populates="answers")

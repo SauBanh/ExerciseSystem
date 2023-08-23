@@ -5,9 +5,9 @@ from sqlalchemy.orm import relationship
 class DbAnswerSession(Base):
     __tablename__ = 'answer_session'
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey('user.id'))
-    question_id = Column(Integer, ForeignKey('question.id'))
-    anwser_id = Column(Integer, ForeignKey('answer.id'))
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    question_id = Column(Integer, ForeignKey('question.id'), nullable=False)
+    anwser_id = Column(Integer, ForeignKey('answer.id'), nullable=False)
 
     # Tạo quan hệ từ 'question' trong bảng 'DbQuestion' về 'answer_sessions' trong bảng này
     question = relationship("DbQuestion", back_populates="answer_sessions")

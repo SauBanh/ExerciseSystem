@@ -6,9 +6,9 @@ from sqlalchemy.orm import relationship
 class DbClassMember(Base):
     __tablename__ = 'class_member'
     id = Column(Integer, primary_key=True, index=True)
-    join_at = Column(DateTime, default=datetime.utcnow)
-    user_id = Column(Integer, ForeignKey('user.id'))
-    class_id = Column(Integer, ForeignKey('class.id', ondelete='CASCADE'))
+    join_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    class_id = Column(Integer, ForeignKey('class.id', ondelete='CASCADE'), nullable=False)
     
     # Tạo quan hệ từ 'class_memberships' trong bảng 'DbUser' về 'user' trong bảng này
     user = relationship("DbUser", back_populates="class_memberships")

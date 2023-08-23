@@ -8,12 +8,14 @@ from sqlalchemy.orm import relationship
 class DbUser(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True, index=True)
-    user_name = Column(String(255))
-    role_id = Column(Integer, ForeignKey('role.id'), default=1)
-    email = Column(String(255))
-    password = Column(String(255))
-    is_active = Column(Boolean, default=True)
-    create_at = Column(DateTime, default=datetime.utcnow)
+    user_name = Column(String(255), nullable=False, unique=True)
+    first_name = Column(String(255), nullable=False)
+    last_name = Column(String(255), nullable=False)
+    role_id = Column(Integer, ForeignKey('role.id'), default=1, nullable=False)
+    email = Column(String(255), unique=True, nullable=False)
+    password = Column(String(255), nullable=False)
+    is_active = Column(Boolean, default=True, nullable=False)
+    create_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     # Thiết lập mối quan hệ 1-nhiều với bảng DbRole
     role = relationship("DbRole", back_populates="users")

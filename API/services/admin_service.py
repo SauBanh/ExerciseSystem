@@ -4,7 +4,7 @@ from models.user_model import DbUser
 from utils.hashing import Hash
 from fastapi import HTTPException, status
 
-def create_user(db: Session, request: UserBase):
+def create_account(db: Session, request: UserBase):
 
     user_exist = db.query(DbUser).filter(DbUser.user_name == request.user_name).first()
     email_exist = db.query(DbUser).filter(DbUser.email == request.email).first()
@@ -20,30 +20,15 @@ def create_user(db: Session, request: UserBase):
         email = request.email,
         password = Hash.bcrypt(request.password),
         first_name = request.first_name,
-        last_name = request.last_name
+        last_name = request.last_name,
+        role_id = 3
     )
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
     return new_user
 
-def get_current_user(db: Session, username: str):
-    user = db.query(DbUser).filter(DbUser.user_name == username).first()
-    if not user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f'User with username {username} not found')
-    return user
-
-def get_user_by_email(db: Session, email: str):
-    user = db.query(DbUser).filter(DbUser.email == email).first()
-    if not user:
-        raise HTTPException(status_code=status.HTTP_200_OK,detail=f'User with username {email} not found')
-    return user
-
-def get_all(db: Session):
-    return db.query(DbUser).all()
-
-# def get_user_by_username(db: Session, username: str):
-#     user = db.query(DbUser).filter(DbUser.user_name == username).first()
-#     if not user:
-#         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'User with username {username} not found')
-#     return user
+def check_admin (current_user):
+    if current_user.role_id != 3:
+        return False
+    return True
