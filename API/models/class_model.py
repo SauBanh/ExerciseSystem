@@ -10,7 +10,7 @@ class DbClass(Base):
     __tablename__ = 'class'
     id = Column(Integer, primary_key=True, index=True)
     class_name = Column(String(255), nullable=False)
-    class_code = Column(Integer, nullable=False)
+    class_code = Column(String(6), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     is_active = Column(Boolean, default=True, nullable=False)
 

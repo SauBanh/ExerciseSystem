@@ -19,8 +19,6 @@ class UserDisplay(BaseModel):
     class Config():
         from_attributes = True
 
-# Class
-
 # Auth
 
 class LoginBase(BaseModel):
@@ -43,3 +41,11 @@ class UserAuth(BaseModel):
 class PasswordBase(BaseModel):
     password: str
     new_password: str
+
+# Class
+
+class ClassBase(BaseModel):
+    class_name: str
+    class_code: int
+
+# class ClassMemberBase(BaseModel):
