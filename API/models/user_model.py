@@ -15,7 +15,7 @@ class DbUser(Base):
     email = Column(String(255), unique=True, nullable=False)
     password = Column(String(255), nullable=False)
     is_active = Column(Boolean, default=True, nullable=False)
-    create_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     # Thiết lập mối quan hệ 1-nhiều với bảng DbRole
     role = relationship("DbRole", back_populates="users")
@@ -25,3 +25,5 @@ class DbUser(Base):
     created_assignments = relationship("DbAssignment", back_populates="user")
     # Thiết lập mối quan hệ 1-nhiều với bảng DbAnswerSession (bởi user_id)
     answer_sessions = relationship("DbAnswerSession", back_populates="user")
+    # Thiết lập mối quan hệ 1-nhiều với bảng DbAssignment (bởi creator_id)
+    created_class = relationship("DbClass", back_populates="user")

@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 # User
 
@@ -46,6 +47,17 @@ class PasswordBase(BaseModel):
 
 class ClassBase(BaseModel):
     class_name: str
-    class_code: int
+
+class ClassDisabled(BaseModel):
+    class_name: str
+    class_code: str
+
+class ClassRoom(BaseModel):
+    class_name: str
+    class_code: str
+    is_active: bool
+    id: int
+    creator_id: int
+    created_at: datetime
 
 # class ClassMemberBase(BaseModel):

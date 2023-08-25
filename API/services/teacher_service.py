@@ -1,6 +1,7 @@
 from routers.schemas import UserBase
 from sqlalchemy.orm.session import Session
 from models.user_model import DbUser
+from models.class_model import DbClass
 from fastapi import HTTPException, status
 from utils.hashing import Hash
 
@@ -30,3 +31,9 @@ def check_teacher(current_user):
     if current_user.role_id != 2:
         return False
     return True
+
+def get_all_class_of_teacher(db: Session, current_user):
+    is_teacher = check_teacher(current_user)
+    if not is_teacher:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="You do not have access")
+    return db.query(DbClass).filter(DbClass.creator_id == current_user.id).all()

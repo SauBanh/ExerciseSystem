@@ -1,6 +1,13 @@
 import random
 import string
 
+def generate_unique_class_code(list_code_class):
+    while True:
+        class_code = generate_random_string()
+        if class_code not in list_code_class:
+            return class_code
+
+
 def generate_random_string(length=6):
     # Tạo một danh sách chứa tất cả các ký tự có thể được sử dụng
     characters = string.ascii_letters + string.digits
